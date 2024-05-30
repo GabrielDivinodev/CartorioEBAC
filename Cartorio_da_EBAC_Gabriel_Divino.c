@@ -65,7 +65,9 @@ int registrar() // Função responsável por cadastrastar os usuários
 	fprintf(file, "||"); //salva o valor da variável
 	fclose(file); //fecha o arquivo
 	
+	contreg(); //redirecionar para a função contreg(continuar registrando)
 	system("pause"); //pausa as informações da interface
+	
 } //fim da função "registrar"
 
 int consultar() // Função responsável por consultar os usuários
@@ -86,6 +88,7 @@ int consultar() // Função responsável por consultar os usuários
 	if(file == NULL) //condição
 	{
 		printf("\n\nNão foi possível acessar o arquivo, não localizado! \n\n");
+		contconsul(); //redirecionar para a função contconsul(continuar consultando)
 	}
 	
 	while(fgets(conteudo,200,file) != NULL) //condição
@@ -96,6 +99,7 @@ int consultar() // Função responsável por consultar os usuários
 		printf("\n\n==================================================================================\n\n");
 	}	
 	
+	contconsul(); //redirecionar para a função contconsul(continuar consultando)
 	system("pause"); //pausar a interface
 	fclose(file); //fecha o arquivo
 } //fim da função "consultar"
@@ -123,15 +127,15 @@ int deletar() // Função responsável por deletar os usuários
 		if(file == NULL) //condição
 		{
 			printf("\n\tEsse usuário não existe!\n\n");
+			contdel(); //redirecionando para a função "contdel(constinuar deletando)"
 			system("pause"); //pausar a interface
-			main(); //redirecionando para a função "main" / função principal
 		}
 		fclose(file); //fecha o arquivo
 			
 		printf("\nVocê tem certeza de que quer deletar esse usuário?\n\n");
 		printf("\t1-Sim\n"); //opção
 		printf("\t2-Não\n\n"); //opção
-		printf("opção: "); //coltando informação do usuário
+		printf("opção: "); //coletando informação do usuário
 		scanf("%d", &simenao); //armazena o valor na variável (%d)
 		system("cls"); //limpar a interface
 			
@@ -140,20 +144,19 @@ int deletar() // Função responsável por deletar os usuários
 			case 1: 
 			remove(cpf); //exclui o cpf digitado
 			printf("\n\tUsuário deletado com sucesso!\n\n");
+			contdel(); //redirecionando para a função "contdel(constinuar deletando)"
 			system("pause"); //pausar a interface
-			main(); //redirecionando para a função "main" / função principal
 			break; //encerrando o "case"
 
 			case 2:
 			printf("\n\tVocê desistiu de deletar o usuário!\n\n");
+			contdel(); //redirecionando para a função "contdel(constinuar deletando)"
 			system("pause"); //pausar a interface
-			main(); //redirecionando para a função "main" / função principal
 			break; //encerrando o "case"
 			
 			default:
 			printf("\tEssa opção não está disponível!\n\n"); //caso o usuário digite qualquer opção não listada anteriormente
 			system("pause"); //pausar a interface
-			main(); //redirecionando para a função "main" / função principal
 			break; //encerrando o "case"		
 		} //fim da seleção
 	} //fim do laço de repetição
@@ -192,6 +195,102 @@ int fechar() // Função responsável fechar o programa
 		break; //encerrando o "case"
 	} //fim da seleção
 } //fim da função "fechar"
+
+int contreg() //função para continuar registrando
+{
+	int opcao=0; // definindo uma classe
+	
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+	printf("\n\nPretende continuar registrando?\n\n");
+	printf("\t1-Sim\n"); //opção
+	printf("\t2-Não\n\n"); //opção
+	printf("opção: "); //coletando informação do usuário
+	
+	scanf("%d", &opcao); //armazena o valor na variável (%d)
+	
+	switch(opcao) //inicio da seleção
+	{
+		case 1:
+		system("cls"); //limpar a interface
+		registrar(); //redirecionando para a função "registrar"
+		break; //encerrando o "case"
+			
+		case 2:
+		main(); //redirecionando para a função "main"
+		break; //encerrando o "case"
+			
+		default:
+		printf("\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
+		system("pause"); //pausar a interface
+		break; //encerrando o "case"
+	}
+	
+}
+
+int contconsul() //função para continuar consultando
+{
+	int opcao=0; // definindo uma classe
+	
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+	printf("\n\nPretende continuar consultando?\n\n");
+	printf("\t1-Sim\n"); //opção
+	printf("\t2-Não\n\n"); //opção
+	printf("opção: "); //coletando informação do usuário
+	
+	scanf("%d", &opcao); //armazena o valor na variável (%d)
+	
+	switch(opcao) //inicio da seleção
+	{
+		case 1:
+		system("cls"); //limpar a interface
+		consultar(); //redirecionando para a função "consultar"
+		break; //encerrando o "case"
+			
+		case 2:
+		main(); //redirecionando para a função "main"
+		break; //encerrando o "case"
+			
+		default:
+		printf("\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
+		system("pause"); //pausar a interface
+		break; //encerrando o "case"
+	}
+	
+}
+
+int contdel() //função para continuar deletando
+{
+	int opcao=0; // definindo uma classe
+	
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+	printf("\n\nPretende continuar deletando?\n\n");
+	printf("\t1-Sim\n"); //opção
+	printf("\t2-Não\n\n"); //opção
+	printf("opção: "); //coletando informação do usuário
+	
+	scanf("%d", &opcao); //armazena o valor na variável (%d)
+	
+	switch(opcao) //inicio da seleção
+	{
+		case 1:
+		system("cls"); //limpar a interface
+		deletar(); //redirecionando para a função "deletar"
+		break; //encerrando o "case"
+			
+		case 2:
+		main(); //redirecionando para a função "main"
+		break; //encerrando o "case"
+			
+		default:
+		printf("\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
+		system("pause"); //pausar a interface
+		break; //encerrando o "case"
+	}
+	
+}
 
 int main() // Função principal do programa
 {
