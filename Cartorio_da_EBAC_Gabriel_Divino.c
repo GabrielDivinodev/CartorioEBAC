@@ -180,7 +180,7 @@ int fechar() // Função responsável fechar o programa
 	{
 		case 1:
 		system("cls"); //limpar a interface
-		printf("Obrigado por utilizar o sistema!\n\n");
+		printf("\tObrigado por utilizar o sistema!\n\n");
 		exit(0); //encerramento do programa	
 		break; //encerrando o "case"
 		
@@ -189,7 +189,7 @@ int fechar() // Função responsável fechar o programa
 		break; //encerrando o "case"
 		
 		default:
-		printf("\n\nEssa opção não está disponível!\n\n"); //caso o usuário digite qualquer opção não listada anteriormente
+		printf("\n\tEssa opção não está disponível!\n\n"); //caso o usuário digite qualquer opção não listada anteriormente
 		system("pause"); //pausar a interface
 		main(); //redirecionando para a função "main" / função principal
 		break; //encerrando o "case"
@@ -221,8 +221,10 @@ int contreg() //função para continuar registrando
 		break; //encerrando o "case"
 			
 		default:
-		printf("\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
+		printf("\n\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
 		system("pause"); //pausar a interface
+		system("cls"); // limpar a interface
+		contreg();	
 		break; //encerrando o "case"
 	}
 	
@@ -253,8 +255,10 @@ int contconsul() //função para continuar consultando
 		break; //encerrando o "case"
 			
 		default:
-		printf("\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
+		printf("\n\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
 		system("pause"); //pausar a interface
+		system("cls");
+		contconsul();		
 		break; //encerrando o "case"
 	}
 	
@@ -285,8 +289,10 @@ int contdel() //função para continuar deletando
 		break; //encerrando o "case"
 			
 		default:
-		printf("\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
+		printf("\n\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
 		system("pause"); //pausar a interface
+		system("cls");
+		contdel();
 		break; //encerrando o "case"
 	}
 	
