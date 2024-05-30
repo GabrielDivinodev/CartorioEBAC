@@ -176,6 +176,8 @@ int fechar() // Função responsável fechar o programa
 	switch(opcao) //inicio da seleção
 	{
 		case 1:
+		system("cls"); //limpar a interface
+		printf("Obrigado por utilizar o sistema!\n\n");
 		exit(0); //encerramento do programa	
 		break; //encerrando o "case"
 		
