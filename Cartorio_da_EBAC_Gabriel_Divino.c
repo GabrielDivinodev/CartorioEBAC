@@ -298,9 +298,68 @@ int contdel() //função para continuar deletando
 	
 }
 
-int main() // Função principal do programa
+int cadastro_senha()
 {
+	char arquivo_senha[10];
+	char senha[10];
 	
+	system("cls"); //limpar a interface
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+	printf("========== Cartório da EBAC ========== \n\n"); //inicio do menu
+	printf("Digite a senha a ser cadastrada: ");
+	scanf("%s", senha);
+	
+	strcpy(arquivo_senha,senha);
+	
+	FILE *file;
+	
+	file = fopen(arquivo_senha,"w");
+	fprintf(file,senha);
+	fclose(file);
+	
+	system("cls");
+	printf("\tCadastrado com sucesso!\n\n");
+	system("pause");
+	main();
+}
+
+int login()
+{
+	char senha[10];
+	
+	
+	system("cls"); //limpar a interface
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+	printf("========== Cartório da EBAC ========== \n\n"); //inicio do menu
+	printf("Digite a sua senha: ");
+	scanf("%s", senha);
+	
+	FILE *file;
+	file = fopen(senha, "r");
+	
+	if (file != NULL)
+	{
+		system("cls");
+		printf("\tAcesso autorizado!\n\n");
+		system("pause");
+		programa();
+	}	
+	
+	else
+	{
+		system("cls");
+		printf("\tSenha incorreta!\n\n");
+		system("pause");
+		main();
+	}
+	
+	fclose(file);
+}
+
+int programa()
+{	
 	int opcao=0; //definindo uma classe
 	int laco=1; //definindo o laço de repetição
 		
@@ -344,6 +403,43 @@ int main() // Função principal do programa
 			printf("\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
 			system("pause"); //pausar a interface
 			break; //encerrando o "case"
+			
 		} //fim da seleção
-	} //fim do laço de repetição
+	} //fim do laço de repetição		
+} //fim da função "programa"
+
+
+int main() // Função principal do programa
+{
+	int cad_log = 0;
+
+	system("cls"); //limpar a interface
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+	printf("========== Cartório da EBAC ========== \n\n"); //inicio do menu
+	printf("Por favor, escolha uma das opções: \n\n ");
+	printf("\t1-Registrar\n");
+	printf("\t2-Logar\n\n");
+	printf("opção: "); 
+	
+	scanf("%d", &cad_log);
+	
+	system("cls");
+	
+	switch(cad_log)
+	{
+		case 1:
+		cadastro_senha();
+		break;
+		
+		case 2:
+		login();
+		break;
+		
+		default:
+		printf("\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
+		system("pause"); //pausar a interface
+		break; //encerrando o "case"	
+			
+	} //fim da seleção
 } //fim da função "main"
