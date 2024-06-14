@@ -157,6 +157,7 @@ int deletar() // Função responsável por deletar os usuários
 			default:
 			printf("\tEssa opção não está disponível!\n\n"); //caso o usuário digite qualquer opção não listada anteriormente
 			system("pause"); //pausar a interface
+			programa();
 			break; //encerrando o "case"		
 		} //fim da seleção
 	} //fim do laço de repetição
@@ -185,13 +186,13 @@ int fechar() // Função responsável fechar o programa
 		break; //encerrando o "case"
 		
 		case 2:
-		main(); //redirecionando para a função "main" / função principal
+		programa(); //redirecionando para a função "main" / função principal
 		break; //encerrando o "case"
 		
 		default:
 		printf("\n\tEssa opção não está disponível!\n\n"); //caso o usuário digite qualquer opção não listada anteriormente
 		system("pause"); //pausar a interface
-		main(); //redirecionando para a função "main" / função principal
+		programa(); //redirecionando para a função "main" / função principal
 		break; //encerrando o "case"
 	} //fim da seleção
 } //fim da função "fechar"
@@ -217,7 +218,7 @@ int contreg() //função para continuar registrando
 		break; //encerrando o "case"
 			
 		case 2:
-		main(); //redirecionando para a função "main"
+		programa(); //redirecionando para a função "main"
 		break; //encerrando o "case"
 			
 		default:
@@ -251,7 +252,7 @@ int contconsul() //função para continuar consultando
 		break; //encerrando o "case"
 			
 		case 2:
-		main(); //redirecionando para a função "main"
+		programa(); //redirecionando para a função "main"
 		break; //encerrando o "case"
 			
 		default:
@@ -285,7 +286,7 @@ int contdel() //função para continuar deletando
 		break; //encerrando o "case"
 			
 		case 2:
-		main(); //redirecionando para a função "main"
+		programa(); //redirecionando para a função "programa"
 		break; //encerrando o "case"
 			
 		default:
@@ -402,6 +403,7 @@ int programa()
 			default:
 			printf("\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
 			system("pause"); //pausar a interface
+			programa();
 			break; //encerrando o "case"
 			
 		} //fim da seleção
@@ -439,6 +441,7 @@ int main() // Função principal do programa
 		default:
 		printf("\tEssa opção não está disponível! \n\n"); //caso o usuário digite qualquer opção não listada anteriormente
 		system("pause"); //pausar a interface
+		main();
 		break; //encerrando o "case"	
 			
 	} //fim da seleção
