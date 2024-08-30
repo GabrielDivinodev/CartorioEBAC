@@ -87,6 +87,8 @@ int consultar() // Função responsável por consultar os usuários
 	
 	if(file == NULL) //condição
 	{
+		fclose(file); //fecha o arquivo
+		
 		printf("\n\nNão foi possível acessar o arquivo, não localizado! \n\n");
 		contconsul(); //redirecionar para a função contconsul(continuar consultando)
 	}
@@ -98,10 +100,10 @@ int consultar() // Função responsável por consultar os usuários
 		printf(" %s",conteudo);
 		printf("\n\n==================================================================================\n\n");
 	}	
-	
+	fclose(file); //fecha o arquivo
+
 	contconsul(); //redirecionar para a função contconsul(continuar consultando)
 	system("pause"); //pausar a interface
-	fclose(file); //fecha o arquivo
 } //fim da função "consultar"
 
 int deletar() // Função responsável por deletar os usuários
@@ -109,29 +111,31 @@ int deletar() // Função responsável por deletar os usuários
 	int simenao=0; //definindo uma classe
 	int lacoI=1; //definindo um laço
 	
-	for(lacoI=1;lacoI=1;) //inicio do laço de repetição
+	system("cls"); //limpar a interface
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+	//inicio da criação de variáveis
+	char cpf[40];	
+	//fim da criação de variáveis
+	
+	printf("Digite o CPF do usuário a ser deletado: "); //coletando informação do usuário
+	scanf("%s",cpf); //armazena o valor da string (%s)
+
+	FILE *file; //cria o arquivo
+	file = fopen(cpf,"r"); //abre o arquivo ("r" = ler)
+
+	if(file == NULL) //condição
 	{
-		system("cls"); //limpar a interface
-		setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
-		
-		//inicio da criação de variáveis
-		char cpf[40];	
-		//fim da criação de variáveis
-		
-		printf("Digite o CPF do usuário a ser deletado: "); //coltando informação do usuário
-		scanf("%s",cpf); //armazena o valor da string (%s)
-	
-		FILE *file; //cria o arquivo
-		file = fopen(cpf,"r"); //abre o arquivo ("r" = ler)
-	
-		if(file == NULL) //condição
-		{
-			printf("\n\tEsse usuário não existe!\n\n");
-			contdel(); //redirecionando para a função "contdel(constinuar deletando)"
-			system("pause"); //pausar a interface
-		}
 		fclose(file); //fecha o arquivo
-			
+
+		printf("\n\tEsse usuário não existe!\n\n");
+		contdel(); //redirecionando para a função "contdel(constinuar deletando)"
+		system("pause"); //pausar a interface
+	}
+	else
+	{
+		fclose(file);
+		
 		printf("\nVocê tem certeza de que quer deletar esse usuário?\n\n");
 		printf("\t1-Sim\n"); //opção
 		printf("\t2-Não\n\n"); //opção
@@ -144,12 +148,14 @@ int deletar() // Função responsável por deletar os usuários
 			case 1: 
 			remove(cpf); //exclui o cpf digitado
 			printf("\n\tUsuário deletado com sucesso!\n\n");
+			system("pause");
 			contdel(); //redirecionando para a função "contdel(constinuar deletando)"
 			system("pause"); //pausar a interface
 			break; //encerrando o "case"
 
 			case 2:
 			printf("\n\tVocê desistiu de deletar o usuário!\n\n");
+			fclose(file);
 			contdel(); //redirecionando para a função "contdel(constinuar deletando)"
 			system("pause"); //pausar a interface
 			break; //encerrando o "case"
@@ -160,7 +166,8 @@ int deletar() // Função responsável por deletar os usuários
 			programa();
 			break; //encerrando o "case"		
 		} //fim da seleção
-	} //fim do laço de repetição
+	}
+	
 } //fim da função "deletar"
 
 int fechar() // Função responsável fechar o programa
